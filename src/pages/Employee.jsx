@@ -5,8 +5,20 @@ import { Sidebar } from '../Components/Sidebar'
 export const Employee = () => {
   return (
     <>
-    <Nav/>
-    <Sidebar/>
+    
+    <div className="min-h-screen">
+      <Nav />
+
+      <div className="flex">
+        <Sidebar />
+
+        <div className="flex-1 bg-gray-100 p-6">
+           main content 
+        </div>
+      </div>
+    </div>
+
+
     </>
   )
 }
