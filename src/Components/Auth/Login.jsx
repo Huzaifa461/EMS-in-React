@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
-import log from "../assets/log.png"
-import lg from "../assets/lg.png"
+// import log from "../assets/log.png"
+// import lg from "../assets/lg.png"
 
 
 export const Login = () => {
@@ -33,28 +33,49 @@ else{
 
   return ( 
    <>
-     <div className="form flex items-center justify-center  h-screen bg-white">
-        
-        <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center gap-8  b  px-2 py-12 w-full h-full rounded-md  md:px-11 md:w-[500px]   bg-gradient-to-br from-indigo-100 via-indigo-500 to-black '>
-         <h1 className='text-3xl mb-10 font-bold text-white'>Account Login</h1>
-         <input type="text" placeholder='Enter your email' className='mt-6 outline-none w-full px-4 py-2   md:w-96 placeholder:text-xl placeholder:text-indigo-700 text-black focus:border-b-2 border-indigo-700'
-         name="email"
-         
-         value={form.email}
-         onChange={handleChange}/>
-         <input type="password" placeholder='Enter password'className='outline-none w-full px-4 py-2 focus:border-b-2 border-indigo-700 md:w-96 placeholder:text-xl placeholder:text-indigo-700 text-black'
-         name="pass"
-         value={form.pass}
-         onChange={handleChange}
-         />
-         <button className='text-xl font-bold rounded-md  text-white border-2 border-whitw hover:bg-indigo-700 px-20 py-4
-          ' >Login</button>
-        </form>
+     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+{/* Reference-style Card */}
+<div className="relative bg-white shadow-2xl rounded-md w-[340px] md:w-[500px] p-6 border-2 border-indigo-900">
+{/* Title */}
+<p className="text-center text-indigo-900 text-2xl font-bold tracking-[4px] mb-6">
+ACCOUNT LOGIN
+</p>
 
-        <img src={lg}
-         alt="" 
-         className='hidden md:inline-block md:w-[600px] md:h-[700px] -translate-y-10'/>
-     </div>
+
+{/* Form */}
+<form
+onSubmit={handleSubmit}
+className="flex flex-col items-center gap-8 w-full"
+>
+<input
+type="text"
+placeholder="Enter your email"
+className="outline-none w-full px-4 py-2 border-b border-gray-300 focus:border-indigo-700 placeholder:text-lg placeholder:text-indigo-600 text-black"
+name="email"
+value={form.email}
+onChange={handleChange}
+/>
+
+
+<input
+type="password"
+placeholder="Enter password"
+className="outline-none w-full px-4 py-2 border-b border-gray-300 focus:border-indigo-700 placeholder:text-lg placeholder:text-indigo-600 text-black"
+name="pass"
+value={form.pass}
+onChange={handleChange}
+/>
+
+
+<button
+type="submit"
+className="absolute right-[-10px] bottom-[-20px] bg-indigo-900 text-white font-bold tracking-[5px] text-xs px-6 py-3 rounded-full rounded-tr-none rounded-br-none shadow-lg hover:bg-indigo-950 transition"
+>
+LOGIN
+</button>
+</form>
+</div>
+</div>
    </>
   )
 }
