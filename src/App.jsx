@@ -1,11 +1,11 @@
 import React from 'react'
-// import { Login } from './pages/Login'
+import { Login } from './Components/Auth/Login'
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
-import { Admin } from './pages/Admin';
-import { Employee } from './pages/Employee';
+// import { Admin } from './pages/Admin';
+// import { Employee } from './pages/Employee';
 
 export const App = () => {
   return (
@@ -13,9 +13,9 @@ export const App = () => {
      <Toaster position="top-center" />     
       <BrowserRouter>
         <Routes>
-          {/* <Route path='/' element={<Login />} /> */}
-          <Route path='/' element={<Admin />} />
-          <Route path='/emply' element={<Employee />} />
+          <Route path='/' element={<Login />} />
+          {/* <Route path='/' element={<Admin />} /> */}
+          {/* <Route path='/emply' element={<Employee />} /> */}
           {/* <Route path='/Login' element={<Login />} /> */}
           {/* <Route path="/Sign" element={<Signup />}/> */}
         </Routes>
