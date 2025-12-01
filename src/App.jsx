@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Login } from './Components/Auth/Login'
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
-// import { Admin } from './pages/Admin';
-// import { Employee } from './pages/Employee';
+import  Admin  from './Components/Dashboard/AdminDshbrd';
+import EmpDshbrd from './Components/Dashboard/EmpDshbrd';
+import { SetLocalStorage } from './utils/localStorag';
+
 
 export const App = () => {
+
+  useEffect(() => {
+    SetLocalStorage()
+  
+    
+  })
+  
   return (
     <>
      <Toaster position="top-center" />     
@@ -15,7 +24,7 @@ export const App = () => {
         <Routes>
           <Route path='/' element={<Login />} />
           {/* <Route path='/' element={<Admin />} /> */}
-          {/* <Route path='/emply' element={<Employee />} /> */}
+          {/* <Route path='/' element={<EmpDshbrd />} /> */}
           {/* <Route path='/Login' element={<Login />} /> */}
           {/* <Route path="/Sign" element={<Signup />}/> */}
         </Routes>
