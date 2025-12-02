@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from "react-router-dom";
 // import log from "../assets/log.png"
 // import lg from "../assets/lg.png"
 
 
-export const Login = () => {
+export const Login = ({user , setuser, data}) => {
   const navigate= useNavigate()
   const [form, setform] = useState({email:'', pass:''})
   const handleChange=(e)=>{
@@ -14,13 +14,20 @@ export const Login = () => {
 }
 const handleSubmit=(e)=>{
   e.preventDefault()
-  if(form.email=="admin"  && form.pass==1234){
+  if(data && data.admin.find(e=> e.email== form.email && e.password == form.pass)){
     toast.success("login successfully 👍")
-    navigate('/admin')
+    setuser({email: form.email , role:'admin'})
+    localStorage.setItem('loggedIn_user', JSON.stringify({role:'admin'}))
+    console.log("admin")
+    
   }
-else if(form.email.endsWith('@gmail.com') && form.pass){
+else if(data && data.emply.find(e=> e.email== form.email && e.password == form.pass)){
            toast.success("login successfully 👍")
-           navigate('/emply')
+           setuser({email: form.email , role:'emply'})
+               localStorage.setItem('loggedIn_user', JSON.stringify({role:'employee'}))
+
+           console.log("emply")
+           
 }
 else if(!form.email || !form.pass){
   toast.error("Fill all inputs")
@@ -28,8 +35,11 @@ else if(!form.email || !form.pass){
 else{
   toast.error("invalid username or password")
 }
+ 
+ 
 
 }
+
 
   return ( 
    <>
