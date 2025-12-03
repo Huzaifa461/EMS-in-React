@@ -41,7 +41,7 @@ export const App = () => {
                 : <Login user={user} setuser={setuser} data={data} />
             } 
           /> 
-          <Route path='/admin' element={<Admin user={user} />} />
+          <Route path='/admin' element={<Admin user={user} setuser={setuser}/>} />
           <Route path='/emply' element={<EmpDshbrd user={user} />} />
          {/* <Route path='/Login' element={<Login />} />
           <Route path="/Sign" element={<Signup />}/> */}

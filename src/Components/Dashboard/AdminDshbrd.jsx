@@ -3,7 +3,7 @@ import Header from '../others/Header'
 import CreateTask from '../others/CreateTask'
 import AllTask from '../others/AllTask'
 
-const AdminDshbrd = ({user}) => {
+const AdminDshbrd = ({user , setuser} ) => {
 //   useEffect(() => {
    
 //  console.log({user})
@@ -12,7 +12,7 @@ const AdminDshbrd = ({user}) => {
   return (
     <>
     <div className='p-12 h-screen'>
-     <Header/>
+     <Header user={user } setuser={setuser}/>
      <CreateTask/>
      <AllTask/>
      </div>
