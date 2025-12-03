@@ -14,19 +14,24 @@ export const Login = ({user , setuser, data}) => {
 }
 const handleSubmit=(e)=>{
   e.preventDefault()
-  if(data && data.admin.find(e=> e.email== form.email && e.password == form.pass)){
+  const admin = data.admin.find(e=> e.email== form.email && e.password == form.pass)
+  const emply = data.emply.find(e=> e.email== form.email && e.password == form.pass)
+  if(admin){
     toast.success("login successfully 👍")
-    setuser({email: form.email , role:'admin'})
-    localStorage.setItem('loggedIn_user', JSON.stringify({role:'admin'}))
-    console.log("admin")
+    const loggedIn_user = {Name:data.admin[0].Name , role:'admin'}
+    setuser(loggedIn_user)
+    localStorage.setItem('loggedIn_user', JSON.stringify(loggedIn_user))
+   
     
   }
-else if(data && data.emply.find(e=> e.email== form.email && e.password == form.pass)){
+  
+else if(emply){
            toast.success("login successfully 👍")
-           setuser({email: form.email , role:'emply'})
-          localStorage.setItem('loggedIn_user', JSON.stringify({role:'employee'}))
+           const loggedIn_user = {email: form.email , role:'employee'}
+           setuser(loggedIn_user)
+          localStorage.setItem('loggedIn_user', JSON.stringify(loggedIn_user))
 
-          console.log("emply")
+          
            
 }
 else if(!form.email || !form.pass){

@@ -12,18 +12,18 @@ import { AuthContext } from './context/AuthProvider';
 
 export const App = () => {
 
-//   useEffect(() => {
-//     SetLocalStorage()
-//     getLocalStorage()
-  
-    
-//   })
+
      const [user, setuser] = useState(null)
      const navigate= useNavigate()
 
      const data= useContext(AuthContext)
-     console.log(data)
-     console.log(data.emply)
+      useEffect(()=>{
+      const savedUser = JSON.parse(localStorage.getItem("loggedIn_user"));
+    if (savedUser) setuser(savedUser);
+        
+      },[])
+     
+     
               
   
   return (
@@ -35,19 +35,16 @@ export const App = () => {
             path="/" 
             element={
               user 
-                ? (user.email == data.admin[0].email 
+                ? (user.role == 'admin'
                     ? <Navigate to="/admin" /> 
                     : <Navigate to="/emply" />) 
                 : <Login user={user} setuser={setuser} data={data} />
             } 
           /> 
           <Route path='/admin' element={<Admin user={user} setuser={setuser}/>} />
-          <Route path='/emply' element={<EmpDshbrd user={user} />} />
-         {/* <Route path='/Login' element={<Login />} />
-          <Route path="/Sign" element={<Signup />}/> */}
+          <Route path='/emply' element={<EmpDshbrd user={user} setuser={setuser} />} />
         </Routes>
-     
-     {/* {!user ?  : ''} */}
+    
     </>
   )
 }
