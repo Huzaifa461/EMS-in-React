@@ -24,9 +24,9 @@ const handleSubmit=(e)=>{
 else if(data && data.emply.find(e=> e.email== form.email && e.password == form.pass)){
            toast.success("login successfully 👍")
            setuser({email: form.email , role:'emply'})
-               localStorage.setItem('loggedIn_user', JSON.stringify({role:'employee'}))
+          localStorage.setItem('loggedIn_user', JSON.stringify({role:'employee'}))
 
-           console.log("emply")
+          console.log("emply")
            
 }
 else if(!form.email || !form.pass){
