@@ -4,7 +4,7 @@ import TaskCard from '../others/TaskCard'
 import TaskList from '../Task/TaskList'
 import { useNavigate } from 'react-router-dom'
 
-const EmpDshbrd = ({user, setuser}) => {
+const EmpDshbrd = ({user , setuser}) => {
    
   const navigate= useNavigate()
   function handleLogout(){
@@ -16,8 +16,8 @@ const EmpDshbrd = ({user, setuser}) => {
     <>
     <div className='p-12 h-screen'>
      <Header user={user} handleLogout={handleLogout}/>
-     <TaskCard/>
-     <TaskList/>
+     <TaskCard user={user}/>
+     <TaskList user={user}/>
      </div>
     </>
   )
