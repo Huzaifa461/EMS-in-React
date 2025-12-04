@@ -19,10 +19,13 @@ export const App = () => {
      const data= useContext(AuthContext)
       useEffect(()=>{
       const savedUser = JSON.parse(localStorage.getItem("loggedIn_user"));
-    if (savedUser) setuser(savedUser);
+      console.log(savedUser)
+    if (savedUser) setuser(...savedUser);
         
       },[])
      
+      
+
      
               
   

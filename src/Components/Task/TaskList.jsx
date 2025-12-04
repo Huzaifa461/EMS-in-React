@@ -1,89 +1,39 @@
 import React from 'react'
+import AcceptTsk from './AcceptTsk'
+import CompleteTsk from './CompleteTsk'
+import FailTsk from './FailTsk'
+import NewTsk from './NewTsk'
 
-const TaskList = () => {
+const TaskList = ({user}) => {
   return (
     <>
      <div
   id="tasklist"
   className="w-full h-[55%] flex items-center justify-start gap-10 mt-28 py-9 overflow-x-auto text-white"
 >
-  <div className="w-[270px] h-full rounded-xl  border-2 bg-gray-900 border-blue-600 p-5">
-   <div className='flex justify-between '>
-    <h2 className='text-sm bg-white p-1 rounded-[4px] text-blue-800 font-semibold'>High</h2>
-    <h2 className='text-sm'>23 Feb </h2>
-   </div>
-   <h2 className='mt-5 text-2xl font-semibold'>
-    Make a youtube video
-   </h2>
-   <p className='font-light mt-5'>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, recusandae?
-   </p>
-  </div>
+  {user.user.tasks.map((elem , index)=>{
+  if(elem.active){
+   return <AcceptTsk key={index}/>
+
+  }
+  if(elem.newTask){
+
+   return <NewTsk key={index}/>
+  }
+  if(elem.completed){
+
+  return <CompleteTsk key={index}/>
+   
+  }
   
-  <div className="w-[270px] h-full rounded-xl  border-2 bg-gray-900 border-blue-600 p-5">
-   <div className='flex justify-between '>
-    <h2 className='text-sm bg-white p-1 rounded-[4px] text-blue-800 font-semibold'>High</h2>
-    <h2 className='text-sm'>23 Feb </h2>
-   </div>
-   <h2 className='mt-5 text-2xl font-semibold'>
-    Make a youtube video
-   </h2>
-   <p className='font-light mt-5'>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, recusandae?
-   </p>
-  </div>
+  if(elem.failed){
 
-  <div className="w-[270px] h-full rounded-xl  border-2 bg-gray-900 border-blue-600 p-5">
-   <div className='flex justify-between '>
-    <h2 className='text-sm bg-white p-1 rounded-[4px] text-blue-800 font-semibold'>High</h2>
-    <h2 className='text-sm'>23 Feb </h2>
-   </div>
-   <h2 className='mt-5 text-2xl font-semibold'>
-    Make a youtube video
-   </h2>
-   <p className='font-light mt-5'>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, recusandae?
-   </p>
-  </div>
+   return  <FailTsk key={index}/>
+  }
 
-  <div className="w-[270px] h-full rounded-xl  border-2 bg-gray-900 border-blue-600 p-5">
-   <div className='flex justify-between '>
-    <h2 className='text-sm bg-white p-1 rounded-[4px] text-blue-800 font-semibold'>High</h2>
-    <h2 className='text-sm'>23 Feb </h2>
-   </div>
-   <h2 className='mt-5 text-2xl font-semibold'>
-    Make a youtube video
-   </h2>
-   <p className='font-light mt-5'>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, recusandae?
-   </p>
-  </div>
+  })}
 
-  <div className="w-[270px] h-full rounded-xl  border-2 bg-gray-900 border-blue-600 p-5">
-   <div className='flex justify-between '>
-    <h2 className='text-sm bg-white p-1 rounded-[4px] text-blue-800 font-semibold'>High</h2>
-    <h2 className='text-sm'>23 Feb </h2>
-   </div>
-   <h2 className='mt-5 text-2xl font-semibold'>
-    Make a youtube video
-   </h2>
-   <p className='font-light mt-5'>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, recusandae?
-   </p>
-  </div>
-
-  <div className="w-[270px] h-full rounded-xl  border-2 bg-gray-900 border-blue-600 p-5">
-   <div className='flex justify-between '>
-    <h2 className='text-sm bg-white p-1 rounded-[4px] text-blue-800 font-semibold'>High</h2>
-    <h2 className='text-sm'>23 Feb </h2>
-   </div>
-   <h2 className='mt-5 text-2xl font-semibold'>
-    Make a youtube video
-   </h2>
-   <p className='font-light mt-5'>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, recusandae?
-   </p>
-  </div>
+  
   
   
 </div>

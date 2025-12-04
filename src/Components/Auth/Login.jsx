@@ -19,8 +19,7 @@ const handleSubmit=(e)=>{
   if(admin){
     toast.success("login successfully 👍")
     const loggedIn_user = { 
-            email: admin.email, 
-            firstName: admin.firstName,
+           ...admin,
             role: "admin" 
           };
     setuser(loggedIn_user)
@@ -33,9 +32,9 @@ else if(emply){
            toast.success("login successfully 👍")
            
             const loggedIn_user = { 
-            email: emply.email, 
-            firstName: emply.firstName,
-            role: "emply" 
+            ...emply,
+            role:'employee'
+
           };
 
            setuser(loggedIn_user)
@@ -99,6 +98,7 @@ className="absolute right-[-10px] bottom-[-20px] bg-indigo-900 text-white font-b
 LOGIN
 </button>
 </form>
+
 </div>
 </div>
    </>

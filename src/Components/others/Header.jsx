@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Header = ({user ,handleLogout}) => {
   const navigate= useNavigate()
+  console.log(user)
   return (
     <>
     <div className="header flex justify-between items-end">

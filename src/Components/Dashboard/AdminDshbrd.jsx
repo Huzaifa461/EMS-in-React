@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Header from '../others/Header'
 import CreateTask from '../others/CreateTask'
-import AllTask from '../others/AllTask'
+import AllTask from '../others/AllTaskNum'
 import { useNavigate } from 'react-router-dom'
 
 const AdminDshbrd = ({user , setuser} ) => {
