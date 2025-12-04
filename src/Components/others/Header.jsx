@@ -6,7 +6,7 @@ const Header = ({user ,handleLogout}) => {
   return (
     <>
     <div className="header flex justify-between items-end">
-     <p className='text-3xl font-bold '>Hello <br /> <span className='text-blue-600 ml-4'>{user?.Name}</span></p>
+     <p className='text-3xl font-bold '>Hello <br /> <span className='text-blue-600 ml-4'>{user?.firstName}</span></p>
      <button className='text-2xl bg-blue-600 text-white px-5 py-3 rounded-md'
      onClick={handleLogout}
      >Log Out</button>

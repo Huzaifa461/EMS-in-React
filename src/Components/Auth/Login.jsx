@@ -18,7 +18,11 @@ const handleSubmit=(e)=>{
   const emply = data.emply.find(e=> e.email== form.email && e.password == form.pass)
   if(admin){
     toast.success("login successfully 👍")
-    const loggedIn_user = {Name:data.admin[0].Name , role:'admin'}
+    const loggedIn_user = { 
+            email: admin.email, 
+            firstName: admin.firstName,
+            role: "admin" 
+          };
     setuser(loggedIn_user)
     localStorage.setItem('loggedIn_user', JSON.stringify(loggedIn_user))
    
@@ -27,7 +31,13 @@ const handleSubmit=(e)=>{
   
 else if(emply){
            toast.success("login successfully 👍")
-           const loggedIn_user = {email: form.email , role:'employee'}
+           
+            const loggedIn_user = { 
+            email: emply.email, 
+            firstName: emply.firstName,
+            role: "emply" 
+          };
+
            setuser(loggedIn_user)
           localStorage.setItem('loggedIn_user', JSON.stringify(loggedIn_user))
 
