@@ -5,7 +5,7 @@ import TaskList from '../Task/TaskList'
 import { useNavigate } from 'react-router-dom'
 
 const EmpDshbrd = ({user , setuser}) => {
-   
+   if (!user) return "...laoding"
   const navigate= useNavigate()
   function handleLogout(){
     setuser(null)

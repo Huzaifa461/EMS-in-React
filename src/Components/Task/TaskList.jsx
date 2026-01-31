@@ -1,36 +1,40 @@
 import React from 'react'
-import AcceptTsk from './AcceptTsk'
+import ActiveTsk from './ActiveTsk'
 import CompleteTsk from './CompleteTsk'
 import FailTsk from './FailTsk'
 import NewTsk from './NewTsk'
 
 const TaskList = ({user}) => {
+  if(!user) return <h1 className='text-2xl text-blue-500 text-center place-content-center'>...Loading</h1>
   return (
     <>
      <div
   id="tasklist"
   className="w-full h-[55%] flex items-center justify-start gap-10 mt-28 py-9 overflow-x-auto text-white"
 >
-  {user.user.tasks.map((elem , index)=>{
+  {user.tasks.map((elem , index)=>{
   if(elem.active){
-   return <AcceptTsk key={index}/>
+    // console.log("active task")
+   return <ActiveTsk task={elem} key={index}/>
 
   }
   if(elem.newTask){
 
-   return <NewTsk key={index}/>
+    // console.log("new task")
+   return <NewTsk task={elem} key={index}/>
   }
   if(elem.completed){
-
-  return <CompleteTsk key={index}/>
+  return <CompleteTsk task={elem} key={index}/>
    
   }
   
   if(elem.failed){
 
-   return  <FailTsk key={index}/>
+   return  <FailTsk task={elem} key={index}/>
   }
-
+  
+  console.log(`Task ${index}: No condition matched!`);
+  return null;
   })}
 
   

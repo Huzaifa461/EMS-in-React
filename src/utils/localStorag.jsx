@@ -1,7 +1,7 @@
 const employees = [
     {
         "id": 1,
-        "firstName": "Arjun",
+        "firstName": " Allu Arjun",
         "email": "emp1@.com",
         "password": "123",
         "taskCounts": {
@@ -13,7 +13,7 @@ const employees = [
         "tasks": [
             {
                 "active": true,
-                "newTask": true,
+                "newTask": false,
                 "completed": false,
                 "failed": false,
                 "taskTitle": "Update website",
@@ -34,6 +34,16 @@ const employees = [
             {
                 "active": true,
                 "newTask": false,
+                "completed": false,
+                "failed": false,
+                "taskTitle": "Fix bugs",
+                "taskDescription": "Resolve bugs reported in issue tracker",
+                "taskDate": "2024-10-14",
+                "category": "Development"
+            },
+            {
+                "active": false,
+                "newTask": true,
                 "completed": false,
                 "failed": false,
                 "taskTitle": "Fix bugs",
