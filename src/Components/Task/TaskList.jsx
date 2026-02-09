@@ -1,49 +1,45 @@
-import React from 'react'
-import ActiveTsk from './ActiveTsk'
-import CompleteTsk from './CompleteTsk'
-import FailTsk from './FailTsk'
-import NewTsk from './NewTsk'
+import React from "react";
+import ActiveTsk from "./ActiveTsk";
+import CompleteTsk from "./CompleteTsk";
+import FailTsk from "./FailTsk";
+import NewTsk from "./NewTsk";
 
-const TaskList = ({user}) => {
-  if(!user) return <h1 className='text-2xl text-blue-500 text-center place-content-center'>...Loading</h1>
+const TaskList = ({ user }) => {
+  if (!user)
+    return (
+      <h1 className="text-2xl text-blue-500 text-center place-content-center">
+        ...Loading
+      </h1>
+    );
   return (
     <>
-     <div
-  id="tasklist"
-  className="w-full h-[55%] flex items-center justify-start gap-10 mt-28 py-9 overflow-x-auto text-white"
->
-  {user.tasks.map((elem , index)=>{
-  if(elem.active){
-    // console.log("active task")
-   return <ActiveTsk task={elem} key={index}/>
+      <div
+        id="tasklist"
+        className="w-full h-[55%] flex items-center justify-start gap-10 mt-28 py-9 overflow-x-auto text-white"
+      >
+        {user.tasks.map((elem, index) => {
+          if (elem.active) {
+            // console.log("active task")
+            return <ActiveTsk task={elem} key={index} />;
+          }
+          if (elem.newTask) {
+            // console.log("new task")
+            return <NewTsk task={elem} key={index} />;
+          }
+          if (elem.completed) {
+            return <CompleteTsk task={elem} key={index} />;
+          }
 
-  }
-  if(elem.newTask){
+          if (elem.failed) {
+            return <FailTsk task={elem} key={index} />;
+          }
 
-    // console.log("new task")
-   return <NewTsk task={elem} key={index}/>
-  }
-  if(elem.completed){
-  return <CompleteTsk task={elem} key={index}/>
-   
-  }
-  
-  if(elem.failed){
-
-   return  <FailTsk task={elem} key={index}/>
-  }
-  
-  console.log(`Task ${index}: No condition matched!`);
-  return null;
-  })}
-
-  
-  
-  
-</div>
-
+          console.log(`Task ${index}: No condition matched!`);
+          return null;
+        })}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default TaskList
+export default TaskList;
