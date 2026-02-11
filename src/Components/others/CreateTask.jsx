@@ -15,18 +15,18 @@ const CreateTask = () => {
    const submithandler=(e)=>{
       e.preventDefault()
       const data = JSON.parse(localStorage.getItem('employee'))
-      setNewtask({tasktitle,taskdesc,date,cateogary, active:true, newTask:true, completed:false, failed: false})
+      {tasktitle !== '' && taskdesc !== '' && assignto !== '' && date !== '' && cateogary !== ''? 
+         setNewtask({tasktitle,taskdesc,date,cateogary, active:true, newTask:true, completed:false, failed: false}) 
+         : alert("Please fill all the fields")}
       data.forEach((elem)=>{
          if(assignto == elem.firstName){
-            if(Newtask !== null){
-            elem.tasks.push(Newtask)
-            }
-            console.log(elem)
+            {Newtask && elem.tasks.push(Newtask)}
+            
          }
-         // console.log(elem.firstName)
-   })
-      // console.log("hello")
+         
+      })
    }
+   // console.log(elem)
    
 
   return (
