@@ -2,43 +2,66 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const CreateTask = () => {
-  const [tasktitle, setTasktitle] = useState("");
-  const [taskdesc, settaskdesc] = useState("");
+
+  const  {emply, setuserdata} = useContext(AuthContext)
+  const [taskTitle, settaskTitle] = useState("");
+  const [taskDescription, settaskDescription] = useState("");
   const [assignto, setassignto] = useState("");
-  const [date, setdate] = useState("");
-  const [cateogary, setcateogary] = useState("");
+  const [taskDate, settaskDate] = useState("");
+  const [category, setcategory] = useState("");
+  const [NewTsk, setNewTsk] = useState({})
 
   const submithandler = (e) => {
     e.preventDefault();
     if (
-      tasktitle === "" ||
-      taskdesc === "" ||
+      taskTitle === "" ||
+      taskDescription === "" ||
       assignto === "" ||
-      date === "" ||
-      cateogary === ""
+      taskDate === "" ||
+      category === ""
     ) {
       alert("please fill alll fields");
       return;
     }
     const newTask = {
-      tasktitle,
-      taskdesc,
-      date,
-      cateogary,
+      taskTitle,
+      taskDescription,
+      taskDate,
+      category,
       active: false,
       newTask: true,
       completed: false,
       failed: false,
     };
-    const data = JSON.parse(localStorage.getItem("employee"));
-    data.forEach((elem) => {
-      if (assignto == elem.firstName) {
-        elem.tasks.push(newTask);
-        elem.taskCounts.newTask += 1;
-        // console.log(data)
-        localStorage.setItem("employee", JSON.stringify(data));
+
+    const updatedEmply = emply.map((emp)=>{
+      if(emp.firstName === assignto){
+        return {
+          ...emp,
+          tasks: [...emp.tasks, newTask],
+          taskCounts:{
+              ...emp.taskCounts,
+              newTask: emp.taskCounts.newTask +1
+          }
+        }
       }
-    });
+      return emp;
+    })
+    localStorage.setItem('employee', JSON.stringify(updatedEmply));
+
+    setuserdata((prev)=>{
+      return {
+        ...prev,
+        emply: updatedEmply
+      }
+    })
+
+    settaskTitle("");
+    settaskDescription("");
+    setassignto("");
+    settaskDate("");
+    setcategory("");
+    
   };
   // console.log(elem)
 
@@ -61,9 +84,9 @@ const CreateTask = () => {
                 type="text"
                 placeholder="what task do you want to assign"
                 className=" w-full border-2 border-blue-600 p-2 rounded-md"
-                value={tasktitle}
+                value={taskTitle}
                 onChange={(e) => {
-                  setTasktitle(e.target.value);
+                  settaskTitle(e.target.value);
                 }}
               />
             </div>
@@ -84,11 +107,11 @@ const CreateTask = () => {
             <div className="flex flex-col gap-3 text-blue-600 w-[50%] ">
               <label className="text-xl font-semibold">Date</label>
               <input
-                type="Date"
+                type="date"
                 placeholder="DD/MM/YYYY"
                 className="w-full border-2 border-blue-600 p-2 rounded-md"
-                value={date}
-                onChange={(e) => setdate(e.target.value)}
+                value={taskDate}
+                onChange={(e) => settaskDate(e.target.value)}
               />
             </div>
 
@@ -96,10 +119,10 @@ const CreateTask = () => {
               <label className="text-xl font-semibold">Caterogary</label>
               <input
                 type="text"
-                placeholder="Which Cateogary of task"
+                placeholder="Which category of task"
                 className=" w-full  border-2 border-blue-600 p-2 rounded-md"
-                value={cateogary}
-                onChange={(e) => setcateogary(e.target.value)}
+                value={category}
+                onChange={(e) => setcategory(e.target.value)}
               />
             </div>
           </div>
@@ -110,8 +133,8 @@ const CreateTask = () => {
               type="text"
               placeholder="Write the description of task"
               className=" w-full  border-2 border-blue-600 p-2 rounded-md"
-              value={taskdesc}
-              onChange={(e) => settaskdesc(e.target.value)}
+              value={taskDescription}
+              onChange={(e) => settaskDescription(e.target.value)}
             />
           </div>
           <button className="mx-auto bg-blue-600 text-white text-center text-lg py-2 my-4 rounded-lg px-10">

@@ -221,15 +221,22 @@ const admin = [{
 
 
 export const SetLocalStorage = () =>{
-  localStorage.setItem('employee', JSON.stringify(employees))
+    if(!localStorage.getItem('employee')){
+        
+        localStorage.setItem('employee', JSON.stringify(employees))
+    }
+
+    if(!localStorage.getItem('admin')){
   localStorage.setItem('admin', JSON.stringify(admin))
+    }
 
 }
-SetLocalStorage()
+// SetLocalStorage()
 
 export const getLocalStorage = ()=>{
    const emply = JSON.parse(localStorage.getItem('employee'))
    const admin = JSON.parse(localStorage.getItem('admin'))
 
     return {emply , admin}
+    
 }
