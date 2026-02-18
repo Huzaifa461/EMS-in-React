@@ -35,7 +35,7 @@ const CreateTask = () => {
     };
 
     const updatedEmply = emply.map((emp)=>{
-      if(emp.firstName === assignto){
+      if(emp.id === assignto){
         return {
           ...emp,
           tasks: [...emp.tasks, newTask],
@@ -95,7 +95,7 @@ const CreateTask = () => {
               <label className="text-xl font-semibold">Assign to</label>
               <input
                 type="text"
-                placeholder="Employee Name"
+                placeholder="Employee ID"
                 className=" w-full  border-2 border-blue-600 p-2 rounded-md"
                 value={assignto}
                 onChange={(e) => setassignto(e.target.value)}
