@@ -94,8 +94,8 @@ const CreateTask = () => {
             <div className="flex flex-col gap-3 text-blue-600 w-[50%] ">
               <label className="text-xl font-semibold">Assign to</label>
               <input
-                type="number"
-                placeholder="Enter Employee ID "
+                type="text"
+                placeholder="Employee Name"
                 className=" w-full  border-2 border-blue-600 p-2 rounded-md"
                 value={assignto}
                 onChange={(e) => setassignto(e.target.value)}
