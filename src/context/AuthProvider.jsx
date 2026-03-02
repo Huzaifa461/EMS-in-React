@@ -38,7 +38,7 @@ setuserdata({emply , admin})
 
   return (
     <div>
-      <AuthContext.Provider value={{  ...userdata, setuserdata}}>
+      <AuthContext.Provider value={{ ...userdata, setuserdata}}>
       {children}
       </AuthContext.Provider>
     </div>

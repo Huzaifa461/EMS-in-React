@@ -11,6 +11,8 @@ const TaskList = ({ user }) => {
         ...Loading
       </h1>
     );
+
+    const data = JSON.parse(localStorage.getItem('employee'))
   return (
     <>
       <div
@@ -20,18 +22,18 @@ const TaskList = ({ user }) => {
         {user.tasks.map((elem, index) => {
           if (elem.active) {
             // console.log("active task")
-            return <ActiveTsk task={elem} key={index} />;
+            return <ActiveTsk task={elem} User={user} key={index} />;
           }
           if (elem.newTask) {
             // console.log("new task")
-            return <NewTsk task={elem} key={index} />;
+            return <NewTsk task={elem} User={user} key={index} />;
           }
           if (elem.completed) {
-            return <CompleteTsk task={elem} key={index} />;
+            return <CompleteTsk task={elem} User={user} key={index} />;
           }
 
           if (elem.failed) {
-            return <FailTsk task={elem} key={index} />;
+            return <FailTsk task={elem} User={user} key={index} />;
           }
 
           console.log(`Task ${index}: No condition matched!`);

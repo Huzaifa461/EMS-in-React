@@ -6,7 +6,7 @@ const TaskCard = ({user}) => {
 
   const data = JSON.parse(localStorage.getItem('employee'))
 const emply = data.find(
-  (elem)=> user?.firstName == elem.firstName
+  (elem)=> user?.id == elem.id
 );
 
 console.log(emply)
