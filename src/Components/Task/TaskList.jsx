@@ -13,13 +13,15 @@ const TaskList = ({ user }) => {
     );
 
     const data = JSON.parse(localStorage.getItem('employee'))
+    const MainUser = data.find((emp)=> emp.id == user.id)
+    console.log(MainUser)
   return (
     <>
       <div
         id="tasklist"
         className="w-full h-[55%] flex items-center justify-start gap-10 mt-28 py-9 overflow-x-auto text-white"
       >
-        {user.tasks.map((elem, index) => {
+        {MainUser.tasks.map((elem, index) => {
           if (elem.active) {
             // console.log("active task")
             return <ActiveTsk task={elem} User={user} key={index} />;

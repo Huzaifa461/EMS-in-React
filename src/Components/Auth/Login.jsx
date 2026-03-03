@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 export const Login = ({user , setuser, data}) => {
   const navigate= useNavigate()
   const [form, setform] = useState({email:'', pass:''})
+  const [role, setrole] = useState('employee')
   const handleChange=(e)=>{
     setform({...form, [e.target.name] : e.target.value})
 
@@ -65,6 +66,11 @@ else{
 ACCOUNT LOGIN
 </p>
 
+<div className='bg-gray-50 shadow-[inset_0_4px_10px_rgba(0,0,0,0.2)]  rounded-lg w-72 m-auto flex items-center justify-between gap-3 text-xl mb-10'>
+  <button onClick={()=>setrole('employee')} className={`px-7 py-3 rounded ${(role == "employee") ? "bg-indigo-900 text-white" : "bg-transparent text-gray-700"}`}>Employee</button>
+  <button onClick={()=>setrole('admin')} className={` px-7 py-3 rounded ${(role == "admin") ? "bg-indigo-900 text-white" : "bg-transparent text-gray-700"}`}>Admin</button>
+</div>
+
 
 {/* Form */}
 <form
@@ -73,8 +79,9 @@ className="flex flex-col items-center gap-8 w-full"
 >
 <input
 type="text"
-placeholder="Enter your email"
-className="outline-none w-full px-4 py-2 border-b border-gray-300 focus:border-indigo-700 placeholder:text-lg placeholder:text-indigo-600 text-black"
+// (role == "employee") ? placeholder="Enter employee email" : placeholder="Enter admin email"
+placeholder={role == "employee" ? "emp(1-5)@gmail.com" : "admin@gmail.com"}
+className="outline-none w-full px-4 py-2 border-b border-gray-300 focus:border-indigo-700 placeholder:text-lg placeholder:text-gray-300 text-black"
 name="email"
 value={form.email}
 onChange={handleChange}
@@ -83,8 +90,8 @@ onChange={handleChange}
 
 <input
 type="password"
-placeholder="Enter password"
-className="outline-none w-full px-4 py-2 border-b border-gray-300 focus:border-indigo-700 placeholder:text-lg placeholder:text-indigo-600 text-black"
+placeholder="123"
+className="outline-none w-full px-4 py-2 border-b border-gray-300 focus:border-indigo-700 placeholder:text-lg placeholder:text-gray-300 text-black"
 name="pass"
 value={form.pass}
 onChange={handleChange}
